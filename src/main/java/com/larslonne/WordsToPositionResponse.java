@@ -1,9 +1,6 @@
 package com.larslonne;
 
-/**
- * Created by lars on 10/05/15.
- */
-public class WordsToPositionResponse {
+public final class WordsToPositionResponse {
     private String type;
     private String[] words;
     private String[] position;

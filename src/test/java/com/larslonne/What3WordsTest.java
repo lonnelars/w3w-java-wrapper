@@ -5,9 +5,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by lars on 10/05/15.
- */
 public class What3WordsTest {
 
     private What3Words what3Words;

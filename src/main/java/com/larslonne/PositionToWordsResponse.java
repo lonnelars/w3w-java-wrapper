@@ -1,8 +1,5 @@
 package com.larslonne;
 
-/**
- * Created by lars on 10/05/15.
- */
 public final class PositionToWordsResponse {
     private String[] words;
     private String[] position;
