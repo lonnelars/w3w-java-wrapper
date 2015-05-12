@@ -1,7 +1,11 @@
 package com.larslonne;
 
+import com.larslonne.models.Languages;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.Assert.*;
 
@@ -40,5 +44,13 @@ public class What3WordsTest {
     public void testValidatePosition() throws Exception {
         assertTrue(what3Words.validatePosition(position));
         assertFalse(what3Words.validatePosition(new String[] {"51", "28"}));
+    }
+
+    @Test
+    public void testGetLanguages() throws Exception {
+        List<Languages.Language> languages = what3Words.getLanguages();
+        Optional<Languages.Language> maybeEnglish = languages.stream().filter(lang -> lang.getCode().equals("en")).findFirst();
+        assertTrue("English should be one of the languages", maybeEnglish.isPresent());
+        assertTrue(maybeEnglish.get().getName_display().equals("English"));
     }
 }

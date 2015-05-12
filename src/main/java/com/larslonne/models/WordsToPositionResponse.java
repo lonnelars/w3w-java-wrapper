@@ -1,11 +1,16 @@
-package com.larslonne;
+package com.larslonne.models;
 
-public final class PositionToWordsResponse {
+public final class WordsToPositionResponse {
+    private String type;
     private String[] words;
     private String[] position;
     private String language;
 
-    public PositionToWordsResponse() {
+    public WordsToPositionResponse() {
+    }
+
+    public String getType() {
+        return type;
     }
 
     public String[] getWords() {

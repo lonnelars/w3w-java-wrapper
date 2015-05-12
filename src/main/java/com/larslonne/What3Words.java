@@ -1,6 +1,9 @@
 package com.larslonne;
 
 import com.google.gson.Gson;
+import com.larslonne.models.Languages;
+import com.larslonne.models.PositionToWordsResponse;
+import com.larslonne.models.WordsToPositionResponse;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -9,6 +12,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -57,6 +61,13 @@ public class What3Words {
         Pattern wordsPattern = Pattern.compile("^\\p{L}+\\.\\p{L}+\\.\\p{L}+$", Pattern.UNICODE_CHARACTER_CLASS);
         Matcher matcher = wordsPattern.matcher(words);
         return matcher.matches();
+    }
+
+    public List<Languages.Language> getLanguages() {
+        String json = callAPI("get-languages", Collections.emptyMap()).readEntity(String.class);
+        Gson gson = new Gson();
+        Languages languages = gson.fromJson(json, Languages.class);
+        return languages.getLanguages();
     }
 
     private Response callAPI(String path, Map<String, String> params) {
